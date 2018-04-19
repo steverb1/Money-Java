@@ -7,12 +7,12 @@ public class MoneyAdder
         this.exchangeService = currencyConverting;
     }
 
-    public double add(double value1, CurrencyType currency1, double value2, CurrencyType currency2)
+    public Money add(Money money1, Money money2)
     {
-        if (currency1 == currency2)
+        if (money1.currency == money2.currency)
         {
-            return value1 + value2;
+            return new Money(money1.amount + money2.amount, money1.currency);
         }
-        return value1 + exchangeService.convert(value2, currency2, currency1);
+        return new Money(money1.amount + exchangeService.convert(money2.amount, money2.currency, money1.currency), money1.currency);
     }
 }

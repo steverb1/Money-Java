@@ -17,16 +17,18 @@ public class MoneyTests
     public void Given4UsdAdd2Usd_Returns6Usd()
     {
         MoneyAdder adder = new MoneyAdder(exchangeServiceStub);
-        double sum = adder.add(4.2, CurrencyType.USD, 2.1, CurrencyType.USD);
-        assertThat(sum, is(closeTo(6.3, TOLERANCE)));
+        Money sum = adder.add(new Money(4.2, CurrencyType.USD), new Money(2.1, CurrencyType.USD));
+        assertThat(sum.amount, is(closeTo(6.3, TOLERANCE)));
+        assertThat(sum.currency, is(CurrencyType.USD));
     }
     
     @Test
     public void Given4UsdAdd2Eur_Returns8Usd()
     {
         MoneyAdder adder = new MoneyAdder(exchangeServiceStub);
-        double sum = adder.add(4.0, CurrencyType.USD, 2, CurrencyType.EUR);
-        assertThat(sum, is(closeTo(8.0, TOLERANCE)));
+        Money sum = adder.add(new Money(4, CurrencyType.USD), new Money(2, CurrencyType.EUR));
+        assertThat(sum.amount, is(closeTo(8.0, TOLERANCE)));
+        assertThat(sum.currency, is(CurrencyType.USD));
     }
 
     @Test
@@ -34,7 +36,8 @@ public class MoneyTests
     {
         MoneyAdder adder = new MoneyAdder(mockService);
         when(mockService.convert(2, CurrencyType.EUR, CurrencyType.USD)).thenReturn(4.0);
-        double sum = adder.add(4.0, CurrencyType.USD, 2, CurrencyType.EUR);
-        assertThat(sum, is(closeTo(8.0, TOLERANCE)));
+        Money sum = adder.add(new Money(4, CurrencyType.USD), new Money(2, CurrencyType.EUR));
+        assertThat(sum.amount, is(closeTo(8.0, TOLERANCE)));
+        assertThat(sum.currency, is(CurrencyType.USD));
     }
 }
