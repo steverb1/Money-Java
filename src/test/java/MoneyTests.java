@@ -11,7 +11,7 @@ public class MoneyTests
     public static final double TOLERANCE = .000001;
     private ExchangeServiceStub exchangeServiceStub = new ExchangeServiceStub();
 
-    CurrencyConverting mockService = mock(CurrencyConverting.class);
+    ForConvertingCurrency mockService = mock(ForConvertingCurrency.class);
 
     @Test
     public void Given4UsdAdd2Usd_Returns6Usd()

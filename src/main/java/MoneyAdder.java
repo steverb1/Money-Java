@@ -1,10 +1,10 @@
 public class MoneyAdder
 {
-    CurrencyConverting exchangeService;
+    ForConvertingCurrency exchangeService;
 
-    public MoneyAdder(CurrencyConverting currencyConverting)
+    public MoneyAdder(ForConvertingCurrency forConvertingCurrency)
     {
-        this.exchangeService = currencyConverting;
+        this.exchangeService = forConvertingCurrency;
     }
 
     public Money add(Money money1, Money money2)
