@@ -1,7 +1,7 @@
 public class Money
 {
-    public double amount;
-    public CurrencyType currency;
+    double amount;
+    CurrencyType currency;
 
     public Money(double amount, CurrencyType currency)
     {
